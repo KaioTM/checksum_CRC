@@ -7,6 +7,7 @@ package checksum_crc;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import model.Binario;
 import model.Checksum;
 
@@ -19,16 +20,18 @@ public class Checksum_CRC {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args)throws UnsupportedEncodingException{
         // TODO code application logic here
-        ArrayList <Integer> mensagemBinaria = new ArrayList();
-        byte[] infoBin;
-        infoBin = "this is plain text".getBytes("UTF-8");
-        for (byte b : infoBin) {
-            mensagemBinaria.add(Integer.parseInt(String.format("%08d",Integer.parseInt(Integer.toBinaryString(b)), 2)));
-            
-        }
-        System.out.println(mensagemBinaria.get(2));
+       Scanner teclado = new Scanner(System.in);
+        ArrayList <String> mensagemDigitada = new ArrayList();
+        Binario binario = new Binario();
+        
+        System.out.println("Digite a mensagem:");
+        String mensagemOriginal = teclado.nextLine();
+        binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
+       
+        
+        
     }
     
 }
