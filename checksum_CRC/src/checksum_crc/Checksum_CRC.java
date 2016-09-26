@@ -25,11 +25,12 @@ public class Checksum_CRC {
        Scanner teclado = new Scanner(System.in);
         ArrayList <String> mensagemDigitada = new ArrayList();
         Binario binario = new Binario();
+        Checksum checksum = new Checksum();
         
         System.out.println("Digite a mensagem:");
         String mensagemOriginal = teclado.nextLine();
         binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
-       
+       checksum.checksum(mensagemDigitada);
         
         
     }

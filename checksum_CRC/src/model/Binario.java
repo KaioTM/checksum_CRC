@@ -27,7 +27,7 @@ public class Binario {
         }
      }
      
-    public String addBinary(String a, String b) {
+    public String somaBinario(String a, String b) {
         // Start typing your Java solution below
         // DO NOT write main() function
         int la = a.length();
