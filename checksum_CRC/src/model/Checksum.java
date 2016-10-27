@@ -6,59 +6,49 @@
 package model;
 
 import java.util.ArrayList;
-import java.lang.*;
 /**
  *
  * @author kaio.teixeira
  */
 public class Checksum {
-    public String checksum(ArrayList<String> mensagemDigitada){
-        
+    public String checksum(ArrayList<String> mensagemDigitada, int tamanhoMensagem){
+
         String parcial1="00000000";
         String parcial2="00000000";
         String checksum="00000000";
-        String soma="00000000";
+        String soma="0";
+        int i;
         Binario binario = new Binario();
-//        
-//        //Valor parcial dos bits 2 e 1
-//        System.out.println(mensagemDigitada.get(1)+" "+ mensagemDigitada.get(0));
-//        //Valor parcial dos bits 4 e 3
-//        System.out.println(mensagemDigitada.get(3)+" "+ mensagemDigitada.get(2));
         
-            for (int i=1;i<=mensagemDigitada.size();){
-                if (mensagemDigitada.size()== 1){
-                    parcial2=mensagemDigitada.get(0);
-                    soma = parcial1 + " " + parcial2;
-                    checksum = soma;
-                    checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
-                    return checksum;
-                }else{
-                    if(mensagemDigitada.size()== 2){
-                        parcial1 = mensagemDigitada.get(1);
+            for (i=0;i<=tamanhoMensagem;){
+                if(i<tamanhoMensagem){
+                    if (tamanhoMensagem == 1){
                         parcial2 = mensagemDigitada.get(0);
-                        soma = parcial1 + " " + parcial2;
-                        checksum = soma;
+                        checksum = binario.somaBinario(parcial2, parcial1);
                         checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
                         return checksum;
                     }else{
-                        try{
-                            
-                            
+                        if (soma.equals("0")){
+                            parcial1 = mensagemDigitada.get(i+1);
+                            parcial2 = mensagemDigitada.get(i);
+                            soma = binario.somaBinario(parcial1, parcial2);
+                            i=i+2;
+                        }else{
+                            parcial1 = soma;
+                            parcial2 = mensagemDigitada.get(i);
+                            soma = binario.somaBinario(parcial1, parcial2);
+                            i=i+2;
                         }
-                        catch (IndexOutOfBoundsException ex){
-                            
-                        }
-                        
                     }
+                }else{
+                    checksum = soma;
+                    checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
+                    return checksum;
+                    
                 }
-                
-//                else{
-//                    parcial1 = binario.somaBinario(mensagemDigitada.get(i+1), mensagemDigitada.get(i));
-//                    parcial2 = binario.somaBinario(mensagemDigitada.get(i+3), mensagemDigitada.get(i+2));
-//                }
-                i=i+2;
-            
             }
+            checksum = soma;
+            checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
             return checksum;
     }
 }

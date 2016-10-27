@@ -22,7 +22,7 @@ public class Checksum_CRC {
      */
     public static void main(String[] args)throws UnsupportedEncodingException{
         // TODO code application logic here
-       Scanner teclado = new Scanner(System.in);
+        Scanner teclado = new Scanner(System.in);
         ArrayList <String> mensagemDigitada = new ArrayList();
         Binario binario = new Binario();
         Checksum checksum = new Checksum();
@@ -30,7 +30,10 @@ public class Checksum_CRC {
         System.out.println("Digite a mensagem:");
         String mensagemOriginal = teclado.nextLine();
         binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
-       checksum.checksum(mensagemDigitada);
+        System.out.println(mensagemDigitada.get(0));
+        System.out.println(mensagemDigitada.get(1));
+        System.out.println(binario.somaBinario(mensagemDigitada.get(0), mensagemDigitada.get(1)));
+        System.out.println(checksum.checksum(mensagemDigitada,mensagemDigitada.size()));
         
         
     }
