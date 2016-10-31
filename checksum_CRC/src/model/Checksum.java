@@ -48,7 +48,8 @@ public class Checksum {
                             if (soma.length() == 9){
                                 soma = binario.somaBinario(Character.toString(soma.charAt(0)), soma);
                                 StringBuilder sb = new StringBuilder(soma);
-                                soma = sb;
+                                sb.deleteCharAt(0);
+                                soma = sb.toString();
                             }
                             i=i+1;
                         }
