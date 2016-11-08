@@ -26,6 +26,7 @@ public class Checksum {
                         System.out.println("A("+i+") = "+mensagemDigitada.get(i));
                         parcial2 = mensagemDigitada.get(0);
                         checksum = binario.somaBinario(parcial2, parcial1);
+                        System.out.println("Mensagem Final: "+checksum);
                         checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
                         return checksum;
                     }else{
@@ -56,12 +57,14 @@ public class Checksum {
                     }
                 }else{
                     checksum = soma;
+                    System.out.println("Mensagem Final: "+checksum);
                     checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
                     return checksum;
                     
                 }
             }
             checksum = soma;
+            System.out.println("Mensagem Final: "+checksum);
             checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
             return checksum;
     }
