@@ -8,8 +8,7 @@ package checksum_crc;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import model.Binario;
-import model.Checksum;
+import model.*;
 
 /**
  *
@@ -26,14 +25,24 @@ public class Checksum_CRC {
         ArrayList <String> mensagemDigitada = new ArrayList();
         Binario binario = new Binario();
         Checksum checksum = new Checksum();
-        
+        String polinomioGerador;
+//        
+//        System.out.println("Digite a mensagem:");
+//        String mensagemOriginal = teclado.nextLine();
+//        binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
+//        System.out.println(mensagemDigitada.get(0));
+//        System.out.println(mensagemDigitada.get(1));
+//        System.out.println(binario.somaBinario(mensagemDigitada.get(0), mensagemDigitada.get(1)));
+//        System.out.println(checksum.checksum(mensagemDigitada,mensagemDigitada.size()));
+
+        Crc crc = new Crc();
         System.out.println("Digite a mensagem:");
         String mensagemOriginal = teclado.nextLine();
         binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
-        System.out.println(mensagemDigitada.get(0));
-        System.out.println(mensagemDigitada.get(1));
-        System.out.println(binario.somaBinario(mensagemDigitada.get(0), mensagemDigitada.get(1)));
-        System.out.println(checksum.checksum(mensagemDigitada,mensagemDigitada.size()));
+        System.out.println("Digite o polinomio gerador:");
+        polinomioGerador = teclado.nextLine();
+        crc.criaBinarioPolinomioGerador(polinomioGerador);
+        //crc.crc(mensagemDigitada, mensagemDigitada.size(), polinomioGerador);
         
         
     }
