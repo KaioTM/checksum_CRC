@@ -26,13 +26,13 @@ public class Crc {
         String[] fatores;
         fatores = polinomioGeradorDigitado.split("[" + Pattern.quote(caracteres) + "]");
         
-        for (int i = 0; i <= 8; i++) {
+        for (int i = 0; i <= 8;++i) {
             try{
             if (fatores[i].contains("X^")) {
                 fatores[i] = fatores[i].replace("X^", "");
                 int fator = Integer.parseInt(fatores[i]);
                 //Parte Responsável por transformar os fatores do polinômio em binário
-                for (int n = 0; n <= fator; n++) {
+                for (int n = 0; n <= (8 - fator); n++) {
                     if (n == (8 - fator)) {
                         binarioPolinomio.add((8 - fator), "1");
                         break;
@@ -77,9 +77,21 @@ public class Crc {
         
     }
             catch (ArrayIndexOutOfBoundsException c){
-                binarioPolinomio.add(i, "0");
+                try{
+                    if(binarioPolinomio.get(8).isEmpty() == false){
+                    break;
+                    }
+                }
+                catch (IndexOutOfBoundsException c2){
+                    binarioPolinomio.add(i, "0");
+                }
+                
+                    
             }
-        }
+                
+                
+            }
+        
         return binarioPolinomio;
     }
 }
