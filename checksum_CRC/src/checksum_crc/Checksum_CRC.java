@@ -43,7 +43,7 @@ public class Checksum_CRC {
         polinomioGerador = teclado.nextLine();
         
         ArrayList <String> polinomio = new ArrayList();
-        polinomio = crc.criaBinarioPolinomioGerador(polinomioGerador);
+        polinomio = binario.criaBinarioPolinomioGerador(polinomioGerador);
          for (String s: polinomio)
 		System.out.print(s);
         //crc.crc(mensagemDigitada, mensagemDigitada.size(), polinomioGerador);
