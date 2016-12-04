@@ -5,13 +5,11 @@
  */
 package model;
 
-import java.util.ArrayList;
-
 /**
  *
- * @author kaio.teixeira
+ * @author KaioT
  */
-public class Mensagem {
+public class SimuladorChecksum extends Simulador {
     
     
 }
