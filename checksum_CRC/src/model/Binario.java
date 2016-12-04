@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.UnsupportedEncodingException;
@@ -15,11 +10,12 @@ import java.util.regex.Pattern;
  * @author kaio.teixeira
  */
 public class Binario {
-    
+    //Método responsável por gerar um número binário (0 ou 1) aleatório.
      public int geraNumeroBinarioAleatorio(){
         Random binario = new Random();
         return binario.nextInt(2);
     }
+     //Converte a mensagem original para um conjunto de 1 byte (8 bits) por caractere em cada posição do ArrayList. 
      public void converterMensagemParaBinario(String mensagemOriginal, ArrayList <String> mensagemBinaria)throws UnsupportedEncodingException{
         byte[] infoBin;
         infoBin = mensagemOriginal.getBytes("UTF-8");
@@ -28,9 +24,9 @@ public class Binario {
         }
      }
      
+     // Soma os binários de 2 strings passadas por parâmetro.
     public String somaBinario(String a, String b) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+
         int la = a.length();
         int lb = b.length();
         
@@ -53,7 +49,7 @@ public class Binario {
         return sum.reverse().toString();
         
     }
-    
+    //Método responsável por identificar se o número binário é 1 ou 0
     public int getBit(String s, int index){
         if(index < 0 || index >= s.length())
             return 0;
@@ -65,6 +61,7 @@ public class Binario {
         
     }
     
+    // Método responsável 
     public ArrayList<String> criaBinarioPolinomioGerador(String polinomioGeradorDigitado) {
         ArrayList<String> binarioPolinomio = new ArrayList();
         String caracteres = " #@_\\/.*+";

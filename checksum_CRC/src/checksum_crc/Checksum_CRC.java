@@ -19,38 +19,52 @@ public class Checksum_CRC {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)throws UnsupportedEncodingException{
-        // TODO code application logic here
-        Scanner teclado = new Scanner(System.in);
-        ArrayList <String> mensagemDigitada = new ArrayList();
-        Binario binario = new Binario();
-        Checksum checksum = new Checksum();
-        String polinomioGerador;
-        Aleatorio mensagemAleatoria = new Aleatorio();
-        System.out.println(mensagemAleatoria.geradorMensagemAleatória(50));
-//        
-//        System.out.println("Digite a mensagem:");
-//        String mensagemOriginal = teclado.nextLine();
-//        binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
-//        System.out.println(mensagemDigitada.get(0));
-//        System.out.println(mensagemDigitada.get(1));
-//        System.out.println(binario.somaBinario(mensagemDigitada.get(0), mensagemDigitada.get(1)));
-//        System.out.println(checksum.checksum(mensagemDigitada,mensagemDigitada.size()));
+public static void main(String[] args) throws UnsupportedEncodingException {
+		Scanner teclado = new Scanner(System.in);
+		ArrayList<String> mensagemDigitada = new ArrayList<String>();
+		Binario binario = new Binario();
+		Checksum checksum = new Checksum();
+		String polinomioGerador;
 
-//        Crc crc = new Crc();
-//        System.out.println("Digite a mensagem:");
-//        String mensagemOriginal = teclado.nextLine();
-//        binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
-//        System.out.println("Digite o polinomio gerador:");
-//        polinomioGerador = teclado.nextLine();
-//        
-//        ArrayList <String> polinomio = new ArrayList();
-//        polinomio = binario.criaBinarioPolinomioGerador(polinomioGerador);
-//         for (String s: polinomio)
-//		System.out.print(s);
-        //crc.crc(mensagemDigitada, mensagemDigitada.size(), polinomioGerador);
-        
-        
-    }
+		// System.out.println("Digite a mensagem:");
+		// String mensagemOriginal = teclado.nextLine();
+		// binario.converterMensagemParaBinario(mensagemOriginal,
+		// mensagemDigitada);
+		// System.out.println(mensagemDigitada.get(0));
+		// System.out.println(mensagemDigitada.get(1));
+		// System.out.println(binario.somaBinario(mensagemDigitada.get(0),
+		// mensagemDigitada.get(1)));
+		// System.out.println(checksum.checksum(mensagemDigitada,mensagemDigitada.size()));
+
+		Crc crc = new Crc();
+		System.out.println("Digite a mensagem:");
+		String mensagemOriginal = teclado.nextLine();
+		binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
+		System.out.println("Digite o polinomio gerador:");
+		polinomioGerador = teclado.nextLine();
+
+		ArrayList<String> polinomio = new ArrayList<String>();
+		polinomio = binario.criaBinarioPolinomioGerador(polinomioGerador);
+		ArrayList<String> novoArrayMensagem = ajusteArray(mensagemDigitada);
+		ArrayList<String> mensagemEnviada = crc.calculaMensagemEnviada(novoArrayMensagem, polinomio, 8);
+		mensagemEnviada = ajusteArray(mensagemEnviada);
+		
+		for (String s : mensagemEnviada) {
+			System.out.print(s);
+		}
+
+	}
+
+	private static ArrayList<String> ajusteArray(ArrayList<String> mensagemDigitada) {
+		ArrayList<String> novo = new ArrayList<String>();
+		for (String string : mensagemDigitada) {
+			char[] vetorChar = string.toCharArray();
+			for (int i = 0; i < vetorChar.length; i++) {
+				String character = Character.toString(vetorChar[i]);
+				novo.add(character);
+			}
+		}
+		return novo;
+	}
     
 }

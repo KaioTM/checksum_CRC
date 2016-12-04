@@ -13,6 +13,7 @@ import java.util.Random;
  */
 public class Aleatorio {
 
+    // Método Responsável por gerar uma mensagem aleatória com base na quantidade de caracteres, passado por parâmetro
     public String geradorMensagemAleatória(int tamanhoMensagem) {
         Random aleatorio = new Random();
         String caracteres = "abcdefghijklmnopqrstuvxwyzABCDEFGHIJKLMNOPQRSTUVXWYZ123456789";
