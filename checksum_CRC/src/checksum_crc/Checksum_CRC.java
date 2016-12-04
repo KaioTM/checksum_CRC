@@ -26,6 +26,8 @@ public class Checksum_CRC {
         Binario binario = new Binario();
         Checksum checksum = new Checksum();
         String polinomioGerador;
+        Aleatorio mensagemAleatoria = new Aleatorio();
+        System.out.println(mensagemAleatoria.geradorMensagemAleatória(50));
 //        
 //        System.out.println("Digite a mensagem:");
 //        String mensagemOriginal = teclado.nextLine();
@@ -35,17 +37,17 @@ public class Checksum_CRC {
 //        System.out.println(binario.somaBinario(mensagemDigitada.get(0), mensagemDigitada.get(1)));
 //        System.out.println(checksum.checksum(mensagemDigitada,mensagemDigitada.size()));
 
-        Crc crc = new Crc();
-        System.out.println("Digite a mensagem:");
-        String mensagemOriginal = teclado.nextLine();
-        binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
-        System.out.println("Digite o polinomio gerador:");
-        polinomioGerador = teclado.nextLine();
-        
-        ArrayList <String> polinomio = new ArrayList();
-        polinomio = binario.criaBinarioPolinomioGerador(polinomioGerador);
-         for (String s: polinomio)
-		System.out.print(s);
+//        Crc crc = new Crc();
+//        System.out.println("Digite a mensagem:");
+//        String mensagemOriginal = teclado.nextLine();
+//        binario.converterMensagemParaBinario(mensagemOriginal, mensagemDigitada);
+//        System.out.println("Digite o polinomio gerador:");
+//        polinomioGerador = teclado.nextLine();
+//        
+//        ArrayList <String> polinomio = new ArrayList();
+//        polinomio = binario.criaBinarioPolinomioGerador(polinomioGerador);
+//         for (String s: polinomio)
+//		System.out.print(s);
         //crc.crc(mensagemDigitada, mensagemDigitada.size(), polinomioGerador);
         
         
