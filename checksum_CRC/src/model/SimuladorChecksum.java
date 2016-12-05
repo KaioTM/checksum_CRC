@@ -9,7 +9,11 @@ package model;
  *
  * @author KaioT
  */
-public class SimuladorChecksum extends Simulador {
-    
-    
+public class SimuladorChecksum extends Simulador implements Runnable{
+    public String resultChecksum;
+    @Override
+    public void run() {
+        Checksum checksum = new Checksum();
+        resultChecksum = checksum.checksumEncode(super.mensagemAleatoriaGeradaEmBinario, super.mensagemAleatoriaGeradaEmBinario.size());
+    }
 }
