@@ -23,5 +23,36 @@ public class Aleatorio {
         }
         return new String(text);
     }
+    
+    public String inserirErrosAleatorios(int sequencia, int tamanho, double p) {
+		String sequenciaBits = Integer.toBinaryString(sequencia);
+		String sequenciaBitsAlterada = sequenciaBits;
+		Random random = new Random();
+		p = p * 10;
+		do {
+			for (int i = 0; i < sequenciaBits.length(); i++) {
+				int probabilidade = random.nextInt(20);
+				if (probabilidade == p) {
+					char bit = sequenciaBits.charAt(i);
+					char bitAlterado = bit == '1' ? '0' : '1';
+					sequenciaBitsAlterada = substituiBitAlterado(sequenciaBitsAlterada, bitAlterado, i);
+					break;
+				}
+			}
+		} while (sequenciaBits == sequenciaBitsAlterada);
+		return sequenciaBitsAlterada;
+	}
+
+	private String substituiBitAlterado(String sequenciaBitsAlterada, char bitAlterado, int i) {
+		String novaMensagem = "";
+		for (int j = 0; j < sequenciaBitsAlterada.length(); j++) {
+			if (j == i) {
+				novaMensagem = novaMensagem + bitAlterado;
+			} else {
+				novaMensagem = novaMensagem + sequenciaBitsAlterada.charAt(j);
+			}
+		}
+		return novaMensagem;
+	}
 
 }

@@ -10,20 +10,23 @@ import java.util.Scanner;
  */
 public class Simulador {
 
-    public int tamanhoPacotes, pacotesAleatórios, probabilidade, seed, polinomioGerador;
+    public int tamanhoPacotes, pacotesAleatórios,seed, polinomioGerador;
+    double probabilidade;
     String mensagemAleatoriaGerada;
     Scanner teclado = new Scanner(System.in);
     Binario binario = new Binario();
     ArrayList<String> mensagemAleatoriaGeradaEmBinario = new ArrayList<String>();
-    
-    public void iniciaSimuladorChecksum(int tamanhoPacotes,int pacotesAleatórios, int probabilidade,int seed) {
+    public int contColisoes;
+
         
-        tamanhoPacotes = teclado.nextInt();
-        pacotesAleatórios = teclado.nextInt();
-        probabilidade = teclado.nextInt();
-        seed = teclado.nextInt(); 
+    public void iniciaSimuladorChecksum(int tamanhoPacotes,int pacotesAleatórios, double probabilidade,int seed) {
+        
+        this.tamanhoPacotes = tamanhoPacotes;
+        this.pacotesAleatórios = pacotesAleatórios;
+        this.probabilidade = probabilidade;
+        this.seed = seed;
     }
-    public void iniciaSimuladorCrc(int tamanhoPacotes,int pacotesAleatórios, int probabilidade,int seed,int polinomioGerador) {
+    public void iniciaSimuladorCrc(int tamanhoPacotes,int pacotesAleatórios, double probabilidade,int seed,int polinomioGerador) {
         
         this.tamanhoPacotes = tamanhoPacotes;
         this.pacotesAleatórios = pacotesAleatórios;
@@ -37,5 +40,6 @@ public class Simulador {
         binario.converterMensagemParaBinario(mensagemAleatoriaGerada, mensagemAleatoriaGeradaEmBinario);
         
     }
+    
 
 }

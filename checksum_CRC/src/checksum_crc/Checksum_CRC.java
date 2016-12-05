@@ -32,7 +32,7 @@ public class Checksum_CRC {
 //        System.out.println("Checksum: "+checksum.checksumEncode(mensagemDigitada,mensagemDigitada.size()));
 //        
 //    }
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args) throws UnsupportedEncodingException, InterruptedException {
 
         ArrayList<String> mensagemDigitada = new ArrayList<String>();
         Binario binario = new Binario();
@@ -41,8 +41,8 @@ public class Checksum_CRC {
         Aleatorio aleatorio = new Aleatorio();
         String mensagemAleatoriaGerada;
 
-        int tamanhoPacotes, pacotesAleatórios, probabilidade, seed, polinomioGerador;
-
+        int tamanhoPacotes, pacotesAleatórios,seed, polinomioGerador;
+        double probabilidade;
         System.out.println("Digite o tamanho dos pacotes a serem gerados aleatoriamente: ");
         tamanhoPacotes = teclado.nextInt();
         System.out.println("Digite o número de pacotes aleatórios a serem gerados: ");
@@ -53,14 +53,15 @@ public class Checksum_CRC {
         seed = teclado.nextInt();
         System.out.println("Digite o polinômio gerador (Ex. 121): ");
         polinomioGerador = teclado.nextInt();
+        
         SimuladorChecksum simuladorChecksum = new SimuladorChecksum();
-        
-        mensagemAleatoriaGerada = aleatorio.geradorMensagemAleatória(seed);
-        simuladorChecksum.armazenaMensagemAleatoriaGerada(mensagemAleatoriaGerada);
-        
         simuladorChecksum.iniciaSimuladorChecksum(tamanhoPacotes, pacotesAleatórios, probabilidade, seed);
-        simuladorChecksum.run();
+        Thread threadChecksum = new Thread(simuladorChecksum);
+        threadChecksum.start();
+        threadChecksum.join();
+       
         System.out.println(simuladorChecksum.resultChecksum);
+        System.out.println(simuladorChecksum.contColisoes);
         //SimuladorCrc simuladorCrc = new SimuladorCrc();
         //simuladorCrc.iniciaSimuladorCrc(tamanhoPacotes, pacotesAleatórios, probabilidade, seed, polinomioGerador);       
         // simuladorCrc.armazenaMensagemAleatoriaGerada(mensagemAleatoriaGerada);

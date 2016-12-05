@@ -25,14 +25,14 @@ public class Checksum {
         for (i = 0; i <= tamanhoMensagem;) {
             if (i < tamanhoMensagem) {
                 if (tamanhoMensagem == 1) {
-                    System.out.println("A(" + i + ") = " + mensagemDigitada.get(i));
+//                    System.out.println("A(" + i + ") = " + mensagemDigitada.get(i));
                     parcial2 = mensagemDigitada.get(0);
                     checksum = binario.somaBinario(parcial2, parcial1);
                     checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
                     return checksum;
                 } else if (soma.equals("0")) {
-                    System.out.println("A(" + (i + 1) + ") = " + mensagemDigitada.get(i + 1));
-                    System.out.println("A(" + i + ") = " + mensagemDigitada.get(i));
+//                    System.out.println("A(" + (i + 1) + ") = " + mensagemDigitada.get(i + 1));
+//                    System.out.println("A(" + i + ") = " + mensagemDigitada.get(i));
                     parcial1 = mensagemDigitada.get(i + 1);
                     parcial2 = mensagemDigitada.get(i);
                     soma = binario.somaBinario(parcial1, parcial2);
@@ -41,8 +41,8 @@ public class Checksum {
                     }
                     i = i + 2;
                 } else {
-                    System.out.println("Soma = " + soma);
-                    System.out.println("A(" + i + ") = " + mensagemDigitada.get(i));
+//                    System.out.println("Soma = " + soma);
+//                    System.out.println("A(" + i + ") = " + mensagemDigitada.get(i));
                     parcial1 = soma;
                     parcial2 = mensagemDigitada.get(i);
                     soma = binario.somaBinario(parcial1, parcial2);
@@ -66,10 +66,10 @@ public class Checksum {
         return checksum;
     }
 
-//    public String checksumDecode(ArrayList<String> mensagemDigitada, int tamanhoMensagem){
-//       String msgOriginal;
-//        
-//        
-//       return msgOriginal;
-//    }
+    //Método realiza novamente o checksum e compara com o checksum enviado para ver se houve mudança na mensagem
+    public boolean validaMensagem(ArrayList<String> mensagemDigitada, String checksumEnviado) {
+        String checksumValidador = checksumEncode(mensagemDigitada, mensagemDigitada.size());
+        return checksumValidador.equals(checksumEnviado);
+
+    }
 }
