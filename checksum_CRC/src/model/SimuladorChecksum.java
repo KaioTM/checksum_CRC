@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.UnsupportedEncodingException;
@@ -22,8 +17,8 @@ public class SimuladorChecksum extends Simulador implements Runnable {
         Checksum checksum = new Checksum();
         Aleatorio aleatorio = new Aleatorio();
 
-        for (int i = 1; i <= super.pacotesAleatórios; i++) {
-            mensagemAleatoriaGerada = aleatorio.geradorMensagemAleatória(seed);
+        for (int i = 1; i <= super.pacotesAleatorios; i++) {
+            mensagemAleatoriaGerada = aleatorio.geradorMensagemAleatoria(seed);
             try {
                 super.armazenaMensagemAleatoriaGerada(mensagemAleatoriaGerada);
             } catch (UnsupportedEncodingException ex) {

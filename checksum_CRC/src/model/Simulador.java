@@ -10,29 +10,32 @@ import java.util.Scanner;
  */
 public class Simulador {
 
-    public int tamanhoPacotes, pacotesAleatórios,seed, polinomioGerador;
+    public int tamanhoPacotes, pacotesAleatorios,seed;
     double probabilidade;
     String mensagemAleatoriaGerada;
     Scanner teclado = new Scanner(System.in);
     Binario binario = new Binario();
-    ArrayList<String> mensagemAleatoriaGeradaEmBinario = new ArrayList<String>();
+    ArrayList<String> mensagemAleatoriaGeradaEmBinario = new ArrayList<>();
+    ArrayList<String> polinomioGerador = new ArrayList<>();
     public int contColisoes;
-
+  
         
-    public void iniciaSimuladorChecksum(int tamanhoPacotes,int pacotesAleatórios, double probabilidade,int seed) {
+    public void iniciaSimuladorChecksum(int tamanhoPacotes,int pacotesAleatórios, double probabilidade,int seed, String mensagemAleatoriaGerada) {
         
         this.tamanhoPacotes = tamanhoPacotes;
-        this.pacotesAleatórios = pacotesAleatórios;
+        this.pacotesAleatorios = pacotesAleatórios;
         this.probabilidade = probabilidade;
         this.seed = seed;
+        this.mensagemAleatoriaGerada = mensagemAleatoriaGerada;
     }
-    public void iniciaSimuladorCrc(int tamanhoPacotes,int pacotesAleatórios, double probabilidade,int seed,int polinomioGerador) {
+    public void iniciaSimuladorCrc(int tamanhoPacotes,int pacotesAleatórios, double probabilidade,int seed,ArrayList<String> polinomioGerador, String mensagemAleatoriaGerada) {
         
         this.tamanhoPacotes = tamanhoPacotes;
-        this.pacotesAleatórios = pacotesAleatórios;
+        this.pacotesAleatorios = pacotesAleatórios;
         this.probabilidade = probabilidade;
         this.seed = seed;
         this.polinomioGerador = polinomioGerador;
+        this.mensagemAleatoriaGerada = mensagemAleatoriaGerada;
         
     }
     public void armazenaMensagemAleatoriaGerada(String mensagemAleatoriaGerada) throws UnsupportedEncodingException{
