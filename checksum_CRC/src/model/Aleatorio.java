@@ -24,23 +24,21 @@ public class Aleatorio {
         return new String(text);
     }
     
-    public String inserirErrosAleatorios(int sequencia, int tamanho, double p) {
-		String sequenciaBits = Integer.toBinaryString(sequencia);
-		String sequenciaBitsAlterada = sequenciaBits;
+    public String inserirErrosAleatorios(String sequenciaBits, int tamanho, double p) {
 		Random random = new Random();
-		p = p * 10;
+		//p = p * 10;
 		do {
 			for (int i = 0; i < sequenciaBits.length(); i++) {
-				int probabilidade = random.nextInt(20);
-				if (probabilidade == p) {
+				int probabilidade = random.nextInt(1);
+				if (probabilidade <= p) {
 					char bit = sequenciaBits.charAt(i);
 					char bitAlterado = bit == '1' ? '0' : '1';
-					sequenciaBitsAlterada = substituiBitAlterado(sequenciaBitsAlterada, bitAlterado, i);
+					sequenciaBits = substituiBitAlterado(sequenciaBits, bitAlterado, i);
 					break;
 				}
 			}
-		} while (sequenciaBits == sequenciaBitsAlterada);
-		return sequenciaBitsAlterada;
+		} while (sequenciaBits == sequenciaBits);
+		return sequenciaBits;
 	}
 
 	private String substituiBitAlterado(String sequenciaBitsAlterada, char bitAlterado, int i) {
