@@ -36,6 +36,7 @@ public class Checksum_CRC {
         simuladorChecksum.iniciaSimuladorChecksum(tamanhoPacotes, pacotesAleatórios, probabilidade, seed, mensagemAleatoriaGerada);
         
         Thread threadChecksum = new Thread(simuladorChecksum);
+        
         threadChecksum.start();
         threadChecksum.join();
         //Checksum
@@ -49,7 +50,7 @@ public class Checksum_CRC {
         threadCrc.join();
         //CRC
         
-        System.out.println("\nResultado Checksum = " + simuladorChecksum.resultChecksum);
+        System.out.println("\nChecksum Enviado = " + simuladorChecksum.resultChecksum);
         System.out.println("Contador de colisão (checksum) = " + simuladorChecksum.contColisoes);
         
         System.out.println("\nResultado CRC = " + simuladorCrc.resultCrc);

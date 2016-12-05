@@ -62,6 +62,8 @@ public class Checksum {
     //Método realiza novamente o checksum e compara com o checksum enviado para ver se houve mudança na mensagem
     public boolean validaMensagem(ArrayList<String> mensagemDigitada, String checksumEnviado) {
         String checksumValidador = checksumEncode(mensagemDigitada, mensagemDigitada.size());
+        System.out.println("Checksum recebido: "+ checksumValidador );
+        
         return checksumValidador.equals(checksumEnviado);
 
     }

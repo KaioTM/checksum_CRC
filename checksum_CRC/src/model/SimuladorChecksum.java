@@ -14,11 +14,13 @@ public class SimuladorChecksum extends Simulador implements Runnable {
 
     @Override
     public void run() {
+        long tempoDecorrido = System.currentTimeMillis();
         Checksum checksum = new Checksum();
         Aleatorio aleatorio = new Aleatorio();
 
         for (int i = 1; i <= super.pacotesAleatorios; i++) {
             mensagemAleatoriaGerada = aleatorio.geradorMensagemAleatoria(seed);
+            System.out.println("Mensagem Enviada: "+mensagemAleatoriaGerada);
             try {
                 super.armazenaMensagemAleatoriaGerada(mensagemAleatoriaGerada);
             } catch (UnsupportedEncodingException ex) {
@@ -31,5 +33,7 @@ public class SimuladorChecksum extends Simulador implements Runnable {
             }
 
         }
+        tempoDecorrido = System.currentTimeMillis() - tempoDecorrido;
+        System.out.println("Tempo decorrido (Checksum): "+tempoDecorrido+ " ms");
     }
 }

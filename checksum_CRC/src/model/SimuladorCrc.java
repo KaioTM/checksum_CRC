@@ -20,6 +20,7 @@ public class SimuladorCrc extends Simulador implements Runnable {
 
     @Override
     public void run() {
+        long tempoDecorrido = System.currentTimeMillis();
         Crc crc = new Crc();
         Aleatorio aleatorio = new Aleatorio();
 
@@ -37,6 +38,7 @@ public class SimuladorCrc extends Simulador implements Runnable {
             }
 
         }
+        System.out.println("Tempo decorrido (CRC): "+tempoDecorrido+ " ms");
     }
 
 }
