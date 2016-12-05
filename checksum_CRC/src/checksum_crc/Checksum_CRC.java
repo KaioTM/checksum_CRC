@@ -32,15 +32,15 @@ public class Checksum_CRC {
 //        System.out.println("Checksum: "+checksum.checksumEncode(mensagemDigitada,mensagemDigitada.size()));
 //        
 //    }
-    public static void main(String[] args) throws UnsupportedEncodingException, InterruptedException {
-
-        ArrayList<String> mensagemDigitada = new ArrayList<String>();
+    public static void main(String[] args) throws UnsupportedEncodingException, InterruptedException {ArrayList<String> mensagemDigitada = new ArrayList<String>();
         Binario binario = new Binario();
         Checksum checksum = new Checksum();
         Scanner teclado = new Scanner(System.in);
         Aleatorio aleatorio = new Aleatorio();
         String mensagemAleatoriaGerada;
 
+        
+        
         int tamanhoPacotes, pacotesAleatórios,seed, polinomioGerador;
         double probabilidade;
         System.out.println("Digite o tamanho dos pacotes a serem gerados aleatoriamente: ");
@@ -48,7 +48,7 @@ public class Checksum_CRC {
         System.out.println("Digite o número de pacotes aleatórios a serem gerados: ");
         pacotesAleatórios = teclado.nextInt();
         System.out.println("Digite a probabilidade de alteração de cada bit da mensagem: ");
-        probabilidade = teclado.nextInt();
+        probabilidade = teclado.nextDouble();
         System.out.println("Digite o valor da seed do gerador de números pseudo-aleatórios: ");
         seed = teclado.nextInt();
         System.out.println("Digite o polinômio gerador (Ex. 121): ");
@@ -62,6 +62,10 @@ public class Checksum_CRC {
        
         System.out.println(simuladorChecksum.resultChecksum);
         System.out.println(simuladorChecksum.contColisoes);
+
+
+        
+        
         //SimuladorCrc simuladorCrc = new SimuladorCrc();
         //simuladorCrc.iniciaSimuladorCrc(tamanhoPacotes, pacotesAleatórios, probabilidade, seed, polinomioGerador);       
         // simuladorCrc.armazenaMensagemAleatoriaGerada(mensagemAleatoriaGerada);

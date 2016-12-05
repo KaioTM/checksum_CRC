@@ -21,55 +21,12 @@ public class Checksum {
         String soma = "0";
 
         Binario binario = new Binario();
-<<<<<<< HEAD
-        
-            for (i=0;i<=tamanhoMensagem;){
-                if(i<tamanhoMensagem){
-                    if (tamanhoMensagem == 1){
-                        System.out.println("A("+i+") = "+mensagemDigitada.get(i));
-                        parcial2 = mensagemDigitada.get(0);
-                        checksum = binario.somaBinario(parcial2, parcial1);
-                        System.out.println("Mensagem Final: "+checksum);
-                        checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
-                        return checksum;
-                    }else{
-                        if (soma.equals("0")){
-                            System.out.println("A("+(i+1)+") = "+mensagemDigitada.get(i+1));
-                            System.out.println("A("+i+") = "+mensagemDigitada.get(i));
-                            parcial1 = mensagemDigitada.get(i+1);
-                            parcial2 = mensagemDigitada.get(i);
-                            soma = binario.somaBinario(parcial1, parcial2);
-                            if (soma.length() == 9){
-                                soma = binario.somaBinario(Character.toString(soma.charAt(0)), soma);
-                            }
-                            i=i+2;
-                        }else{
-                            System.out.println("Soma = "+soma);
-                            System.out.println("A("+i+") = "+mensagemDigitada.get(i));
-                            parcial1 = soma;
-                            parcial2 = mensagemDigitada.get(i);
-                            soma = binario.somaBinario(parcial1, parcial2);
-                            if (soma.length() == 9){
-                                soma = binario.somaBinario(Character.toString(soma.charAt(0)), soma);
-                                StringBuilder sb = new StringBuilder(soma);
-                                sb.deleteCharAt(0);
-                                soma = sb.toString();
-                            }
-                            i=i+1;
-                        }
-                    }
-                }else{
-                    checksum = soma;
-                    System.out.println("Mensagem Final: "+checksum);
-=======
-
         for (i = 0; i <= tamanhoMensagem;) {
             if (i < tamanhoMensagem) {
                 if (tamanhoMensagem == 1) {
 //                    System.out.println("A(" + i + ") = " + mensagemDigitada.get(i));
                     parcial2 = mensagemDigitada.get(0);
                     checksum = binario.somaBinario(parcial2, parcial1);
->>>>>>> origin/master
                     checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
                     return checksum;
                 } else if (soma.equals("0")) {
@@ -100,14 +57,7 @@ public class Checksum {
                 checksum = soma;
                 checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
                 return checksum;
-
-            }
-<<<<<<< HEAD
-            checksum = soma;
-            System.out.println("Mensagem Final: "+checksum);
-            checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
-            return checksum;
-=======
+        }
         }
         checksum = soma;
         checksum = checksum.replace('0', '2').replace('1', '0').replace('2', '1');
@@ -119,6 +69,5 @@ public class Checksum {
         String checksumValidador = checksumEncode(mensagemDigitada, mensagemDigitada.size());
         return checksumValidador.equals(checksumEnviado);
 
->>>>>>> origin/master
     }
 }
