@@ -5,13 +5,16 @@
  */
 package model;
 
-import java.util.ArrayList;
-
 /**
  *
- * @author kaio.teixeira
+ * @author KaioT
  */
-public class Mensagem {
-    
+public class SimuladorCrc extends Simulador implements Runnable{
+
+    @Override
+    public void run() {
+        Crc crc = new Crc();
+    }
+
     
 }
